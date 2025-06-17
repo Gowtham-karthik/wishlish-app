@@ -29,30 +29,28 @@ function App() {
 
 
   return (
-    <>
-      <h1 className='Heading'>WISHLIST APP</h1>
-      <div>
-        <input onChange={onAddtodo} placeholder='add to do'></input>
-        <button onClick={onEnterClick}>ENTER</button>
-        <ul>
-          {selecteditem.map((todo) => (
-            <li key={todo.id}>
+  <>
+    <h1 className='Heading'>WISHLIST APP</h1>
+    <div className="app-container">
+      <input value={item} onChange={onAddtodo} placeholder='Add to-do' />
+      <button onClick={onEnterClick}>ENTER</button>
+      <ul>
+        {selecteditem.map((todo) => (
+          <li key={todo.id}>
             <input
               type="checkbox"
               checked={todo.checked}
               onChange={() => onToggleCheck(todo.id)}
             />
-            <span style={{ textDecoration: todo.checked ? 'line-through' : 'none' }}>
-              {todo.value}
-            </span>
+            <span className={todo.checked ? 'crossed' : ''}>{todo.value}</span>
             <button onClick={() => onDeleteClick(todo.id)}>DELETE</button>
-          </li>))}
-        </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </>
+);
 
-      </div>
-    </>
-    
-  );
 }
 
 export default App;
